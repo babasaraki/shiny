@@ -10,12 +10,14 @@ var sliderInputBinding = {};
 $.extend(sliderInputBinding, textInputBinding, {
   find: function(scope) {
     // Check if ionRangeSlider plugin is loaded
+    console.log('find silderinputbinding')
     if (!$.fn.ionRangeSlider)
       return [];
 
     return $(scope).find('input.js-range-slider');
   },
   getType: function(el) {
+    console.log('getType silderinputbinding')
     var dataType = $(el).data('data-type');
     if (dataType === 'date')
       return 'shiny.date';
@@ -25,6 +27,8 @@ $.extend(sliderInputBinding, textInputBinding, {
       return false;
   },
   getValue: function(el) {
+    console.log('getValue silderinputbinding')
+
     var $el = $(el);
     var result = $(el).data('ionRangeSlider').result;
 
@@ -53,6 +57,8 @@ $.extend(sliderInputBinding, textInputBinding, {
 
   },
   setValue: function(el, value) {
+    console.log('setValue silderinputbinding')
+
     var $el = $(el);
     var slider = $el.data('ionRangeSlider');
 
@@ -70,14 +76,20 @@ $.extend(sliderInputBinding, textInputBinding, {
     }
   },
   subscribe: function(el, callback) {
+    console.log('subscribe silderinputbinding')
+    
     $(el).on('change.sliderInputBinding', function(event) {
       callback(!$(el).data('immediate') && !$(el).data('animating'));
     });
   },
   unsubscribe: function(el) {
+    console.log('unsubscribe silderinputbinding')
+
     $(el).off('.sliderInputBinding');
   },
   receiveMessage: function(el, data) {
+    console.log('receiveMessage silderinputbinding')
+
     var $el = $(el);
     var slider = $el.data('ionRangeSlider');
     var msg = {};
@@ -106,14 +118,19 @@ $.extend(sliderInputBinding, textInputBinding, {
     }
   },
   getRatePolicy: function() {
+    console.log('getRatePolicy silderinputbinding')
     return {
       policy: 'debounce',
       delay: 250
     };
   },
   getState: function(el) {
+     console.log('getState silderinputbinding')
+
   },
   initialize: function(el) {
+    console.log('initialize silderinputbinding')
+
     var opts = {};
     var $el = $(el);
     var dataType = $el.data('data-type');
@@ -144,6 +161,7 @@ $.extend(sliderInputBinding, textInputBinding, {
 
   // Number of values; 1 for single slider, 2 for range slider
   _numValues: function(el) {
+    console.log('_numValues silderinputbinding')
     if ($(el).data('ionRangeSlider').options.type === 'double')
       return 2;
     else
