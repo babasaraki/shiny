@@ -1,13 +1,18 @@
 var datatableOutputBinding = new OutputBinding();
 $.extend(datatableOutputBinding, {
   find: function(scope) {
+    console.log('find datatableoutputbinding')
     return $(scope).find('.shiny-datatable-output');
   },
   onValueError: function(el, err) {
+    console.log('onValueError datatableoutputbinding')
     exports.unbindAll(el);
     this.renderError(el, err);
   },
   renderValue: function(el, data) {
+    console.log('renderValue datatableoutputbinding')
+    console.log(data)
+
     var $el = $(el).empty();
     if (!data || !data.colnames) return;
 
